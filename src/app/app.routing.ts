@@ -1,6 +1,8 @@
 import {Routes} from '@angular/router';
 import {BaseLayoutComponent} from './shared/base-layout/base-layout.component';
 import {HomeComponent} from './pages/home/home.component';
+import {LoginComponent} from './login/login.component';
+
 
 export const AppRoutes: Routes = [
   {
@@ -9,11 +11,15 @@ export const AppRoutes: Routes = [
     children: [
       {
         path: '',
-        component: HomeComponent
-      }
+        component: HomeComponent,
+      },
       /*
         New components go here...
        */
+      {
+      path: 'login',
+      component: LoginComponent,
+      }
     ]
   }
 ];
