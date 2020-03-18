@@ -29,8 +29,8 @@ export const AppRoutes: Routes = [
         New components go here...
        */
       {
-      path: 'signin',
-      component: SigninComponent,
+      path: 'login',
+      component: LoginComponent,
       }
     ]
   }
