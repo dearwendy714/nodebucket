@@ -14,7 +14,16 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { LoginComponent } from './login/login.component';
+import { SigninComponent } from './pages/signin/signin.component';
+import { NavComponent } from './shared/nav/nav.component';
+import { SignoutComponent } from './pages/signout/signout.component';
+import { EmployeeComponent } from './pages/employee/employee.component';
+import { TaskComponent } from './pages/task/task.component';
+import { AboutComponent } from './pages/about/about.component';
+import { AddTaskComponent } from './pages/task/add-task/add-task.component';
+import { DeleteTaskComponent } from './pages/task/delete-task/delete-task.component';
+import { EditTaskComponent } from './pages/task/edit-task/edit-task.component';
+import { TasksComponent } from './pages/task/tasks/tasks.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +31,16 @@ import { LoginComponent } from './login/login.component';
     BaseLayoutComponent,
     AuthLayoutComponent,
     HomeComponent,
-    LoginComponent
+    SigninComponent,
+    NavComponent,
+    SignoutComponent,
+    EmployeeComponent,
+    TaskComponent,
+    AboutComponent,
+    AddTaskComponent,
+    DeleteTaskComponent,
+    EditTaskComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,

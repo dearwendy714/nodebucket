@@ -1,7 +1,19 @@
+/*
+ *  Title: app.routing.ts
+ *  Author: Professor Cristy Cross
+ *  Modified by: Wendy Portillo
+ *  Date: 5 March 2020
+ *  Description: Routing nodebucket app.
+ */
+
+ // Required modules
+
+
 import {Routes} from '@angular/router';
 import {BaseLayoutComponent} from './shared/base-layout/base-layout.component';
 import {HomeComponent} from './pages/home/home.component';
-import {LoginComponent} from './login/login.component';
+import { SignInComponent } from './pages/signin/signin.component';
+
 
 
 export const AppRoutes: Routes = [
@@ -17,8 +29,8 @@ export const AppRoutes: Routes = [
         New components go here...
        */
       {
-      path: 'login',
-      component: LoginComponent,
+      path: 'signin',
+      component: SigninComponent,
       }
     ]
   }
