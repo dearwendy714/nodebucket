@@ -18,12 +18,11 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { NavComponent } from './shared/nav/nav.component';
 import { SignoutComponent } from './pages/signout/signout.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
-import { TaskComponent } from './pages/task/task.component';
+import { TasksComponent } from './pages/task/tasks/tasks.component';
 import { AboutComponent } from './pages/about/about.component';
 import { AddTaskComponent } from './pages/task/add-task/add-task.component';
 import { DeleteTaskComponent } from './pages/task/delete-task/delete-task.component';
 import { EditTaskComponent } from './pages/task/edit-task/edit-task.component';
-import { TasksComponent } from './pages/task/tasks/tasks.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +34,7 @@ import { TasksComponent } from './pages/task/tasks/tasks.component';
     NavComponent,
     SignoutComponent,
     EmployeeComponent,
-    TaskComponent,
+    TasksComponent,
     AboutComponent,
     AddTaskComponent,
     DeleteTaskComponent,
