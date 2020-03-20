@@ -59,7 +59,7 @@ mongoose
 
 //find employee by id
 app.get("/api/employees/:id", function(req, res, next) {
-  Employee.findOne({ employeeId: req.params.id }, function(err, employee) {
+  Employee.findOne({ 'employeeId': req.params.id }, function(err, employee) {
     if (err) {
       console.log(err);
       return next(err);
@@ -69,6 +69,131 @@ app.get("/api/employees/:id", function(req, res, next) {
     }
   });
 });
+
+//findAllTask by API
+// API used to retrieved all tasks from the database for a single employee
+app.get("/api/employees/:empId/tasks", function(req, res, next) {
+  // Retrieve all of the documents from the mongoDB database
+  Employee.findOne({ 'employeeId': req.params.id }, 'empId todo done', function(err, employee) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    } else {
+      console.log(employee);
+      res.json(employee);
+    }
+  });
+}); 
+
+//CreateTask by API
+// API used to create new task for single employee
+app.post("/api/employees/:empId/tasks", function(req, res, next) {
+  // Retrieve all of the documents from the mongoDB database
+  Employee.findOne({ 'employeeId': req.params.id }, function(err, employee) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    } else {
+      console.log(employee);
+
+      const item = {
+        text: req.body.text
+      };
+
+      employee.todo.push(item);
+      employee.save(function(err, employee) {
+        if (err) {
+          console.log(err);
+          return next(err);
+        } else {
+          console.log(employee);
+          res.json(employee);
+        }
+
+      })
+    }
+  })
+}); 
+
+//UpdateTask  API
+// API used to create new task for single employee
+app.put("/api/employees/:empId/tasks", function(req, res, next) {
+  // Retrieve all of the documents from the mongoDB database
+  Employee.findOne({ 'employeeId': req.params.id }, function(err, employee) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    } else {
+      console.log(employee);
+
+employee.set({
+  todo: req.body.todo,
+  done: req.body.done
+});
+
+      employee.save(function(err, employee) {
+        if (err) {
+          console.log(err);
+          return next(err);
+        } else {
+          console.log(employee);
+          res.json(employee);
+        }
+
+      })
+    }
+  })
+}); 
+
+//DeleteTask  API
+// API used to delete task for single employee
+app.delete("/api/employees/:empId/tasks/:taskId", function(req, res, next){
+  Employee.findOne({ 'empId': req.params,empId }, function(err,employee) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    } else {
+      console.log(employee);
+
+      const todoItem = employee.todo.find(item => item._id.toString() +++ req.params.taskId);
+      const doneItem = employee.done.find(item => item._id.toString() +++ req.params.taskId);
+
+      if(todoItem) {
+        employee.todo.id(todo.Item_id).remove();
+        employee.save(function(err, emp1){
+          if (err) {
+            console.log(err); 
+            return next(err); 
+          } else {
+            console.log(emp1);
+            res.json(emp1);
+          }
+          })
+
+        } else if (doneItem) {
+          employee.done.id(done.Item_id).remove();
+          employee.save(function(err, emp2){
+            
+            if (err) {
+              console.log(err); 
+              return next(err); 
+            } else {
+              console.log(emp2);
+              res.json(emp2);
+            }
+            })
+        } else {
+          console.log('unable to locate task: ${req.params.taskId}');
+          res.status(200).send({
+            'type': 'warning', 
+            'text': 'unable to locate task: ${req.params.taskId}'
+          })
+        }
+ 
+      }
+  })
+});
+
 
 //add an employee
 app.post("/api/addemployee", (req, res) => {

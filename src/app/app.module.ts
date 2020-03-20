@@ -1,5 +1,14 @@
+/*
+============================================
+; Author: Wendy Portillo
+; Date:   3/15/2020
+; Description: web-450/Nodebucket
+;===========================================
+*/
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
 import { RouterModule} from '@angular/router';
 import { AppRoutes } from './app.routing';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -11,9 +20,8 @@ import { BaseLayoutComponent } from './shared/base-layout/base-layout.component'
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import { MatIconModule, MatMenuModule, MatToolbarModule } from '@angular/material';
 import { SigninComponent } from './pages/signin/signin.component';
 import { NavComponent } from './shared/nav/nav.component';
 import { SignoutComponent } from './pages/signout/signout.component';
@@ -48,10 +56,14 @@ import { EditTaskComponent } from './pages/task/edit-task/edit-task.component';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(AppRoutes, { useHash: true, enableTracing: false, scrollPositionRestoration: 'enabled'}),
+    MatToolbarModule,
     FlexLayoutModule,
     MatToolbarModule,
+    MatMenuModule,
     MatButtonModule,
     MatIconModule,
+    MatToolbarModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
