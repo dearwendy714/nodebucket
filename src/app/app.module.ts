@@ -23,6 +23,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule, MatMenuModule, MatToolbarModule } from '@angular/material';
 import { SigninComponent } from './pages/signin/signin.component';
+import { CookieService} from 'ngx-cookie-service'; 
 import { NavComponent } from './shared/nav/nav.component';
 import { SignoutComponent } from './pages/signout/signout.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
@@ -65,7 +66,9 @@ import { EditTaskComponent } from './pages/task/edit-task/edit-task.component';
     MatToolbarModule,
 
   ],
-  providers: [],
+  providers: [
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

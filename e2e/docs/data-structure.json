@@ -1,0 +1,15 @@
+{
+    "empId": 1007, 
+    "fistrname": "Wendy", 
+    "lastname": "Portillo", 
+    "todo": [
+        {
+        "text": "Take the trash out"
+        }
+    ],
+    "done":[
+        {
+        "text": "Take the trash out"
+        }
+    ]
+}
