@@ -21,9 +21,11 @@ import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component'
 import { HomeComponent } from './pages/home/home.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule, MatMenuModule, MatToolbarModule } from '@angular/material';
+// tslint:disable-next-line: max-line-length
+import { MatIconModule, MatMenuModule, MatToolbarModule, MatCardTitle, MatInputModule, MatCardContent, MatFormFieldModule, MatCardModule } from '@angular/material';
 import { SigninComponent } from './pages/signin/signin.component';
-import { CookieService} from 'ngx-cookie-service'; 
+import { CookieService} from 'ngx-cookie-service';
+import { MatSnackBarModule} from '@angular/material/snack-bar';
 import { NavComponent } from './shared/nav/nav.component';
 import { SignoutComponent } from './pages/signout/signout.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
@@ -32,6 +34,8 @@ import { AboutComponent } from './pages/about/about.component';
 import { AddTaskComponent } from './pages/task/add-task/add-task.component';
 import { DeleteTaskComponent } from './pages/task/delete-task/delete-task.component';
 import { EditTaskComponent } from './pages/task/edit-task/edit-task.component';
+import { AuthGuard } from './shared/guards/auth.guard'
+
 
 @NgModule({
   declarations: [
@@ -58,16 +62,22 @@ import { EditTaskComponent } from './pages/task/edit-task/edit-task.component';
     ReactiveFormsModule,
     RouterModule.forRoot(AppRoutes, { useHash: true, enableTracing: false, scrollPositionRestoration: 'enabled'}),
     MatToolbarModule,
+    MatCardTitle,
     FlexLayoutModule,
     MatToolbarModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatCardModule,
     MatMenuModule,
+    MatCardContent,
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
+    MatSnackBarModule
 
   ],
   providers: [
-    CookieService
+    CookieService, AuthGuard
   ],
   bootstrap: [AppComponent]
 })

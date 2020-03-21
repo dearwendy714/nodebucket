@@ -12,6 +12,7 @@
 import { Routes } from '@angular/router';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { HomeComponent } from './pages/home/home.component';
+import {AuthLayoutComponent} from './shared/auth-layout/auth-layout.component';
 import { SigninComponent } from './pages/signin/signin.component';
 
 
@@ -24,14 +25,20 @@ export const AppRoutes: Routes = [
       {
         path: '',
         component: HomeComponent,
+        canActivate:[SigninComponent]
       },
-      /*
-        New components go here...
-       */
+      {
+        path: 'signin',
+        component: AuthLayoutComponent,
+      },
+
       {
         path: 'signin',
         component: SigninComponent,
       },
+            /*
+        New components go here...
+       */
     ]
   }
 ];
