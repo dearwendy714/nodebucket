@@ -9,7 +9,6 @@
 
 //Required module
 const mongoose = require('mongoose');
-const Item = require('./item');
 
 //Define a schema
 var Schema = mongoose.Schema; 
@@ -20,10 +19,10 @@ let employeeSchema = mongoose.Schema({
   firstName: String,
   lastName: String,
   roles: Array, 
-  tasks: Array,
-  todo: [Item],
-  done: [Item]
+  todo: Array,
+  done: Array
 });
 
 //Attach EmployeeSchema to an Employee Model
 module.exports = mongoose.model('Employee', employeeSchema);
+

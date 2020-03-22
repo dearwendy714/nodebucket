@@ -32,7 +32,7 @@ export class AuthGuard implements CanActivate   {
             /***
          * Otherwise, the user is not signed into the system and should be redirected to the sign-in component
          */
-        this.router.navigate(['/session/signin']);
+        this.router.navigate(['/signin']);
         return false;
         }
     }

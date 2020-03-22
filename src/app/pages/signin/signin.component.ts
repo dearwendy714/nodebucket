@@ -25,7 +25,6 @@ export class SigninComponent implements OnInit {
   constructor(private router: Router, private cookieService: CookieService, private fb: FormBuilder, private http: HttpClient, private snackBar: MatSnackBar) {}
 
   ngOnInit() {
-    this.cookieService.set("session_user","test")
     this.form = this.fb.group({
       empId: [null, Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])]
 

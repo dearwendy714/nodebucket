@@ -25,10 +25,10 @@ export const AppRoutes: Routes = [
       {
         path: '',
         component: HomeComponent,
-        canActivate:[SigninComponent]
+        // canActivate:[SigninComponent]
       },
       {
-        path: 'signin',
+        path: 'auth',
         component: AuthLayoutComponent,
       },
 
@@ -42,3 +42,4 @@ export const AppRoutes: Routes = [
     ]
   }
 ];
+

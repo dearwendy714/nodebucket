@@ -20,10 +20,15 @@ import { BaseLayoutComponent } from './shared/base-layout/base-layout.component'
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule } from '@angular/material/button';
 // tslint:disable-next-line: max-line-length
-import { MatIconModule, MatMenuModule, MatToolbarModule, MatCardTitle, MatInputModule, MatCardContent, MatFormFieldModule, MatCardModule } from '@angular/material';
 import { SigninComponent } from './pages/signin/signin.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { CookieService} from 'ngx-cookie-service';
 import { MatSnackBarModule} from '@angular/material/snack-bar';
 import { NavComponent } from './shared/nav/nav.component';
@@ -34,7 +39,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { AddTaskComponent } from './pages/task/add-task/add-task.component';
 import { DeleteTaskComponent } from './pages/task/delete-task/delete-task.component';
 import { EditTaskComponent } from './pages/task/edit-task/edit-task.component';
-import { AuthGuard } from './shared/guards/auth.guard'
+import { AuthGuard } from './shared/guards/auth.guard';
 
 
 @NgModule({
@@ -61,20 +66,16 @@ import { AuthGuard } from './shared/guards/auth.guard'
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(AppRoutes, { useHash: true, enableTracing: false, scrollPositionRestoration: 'enabled'}),
-    MatToolbarModule,
-    MatCardTitle,
     FlexLayoutModule,
-    MatToolbarModule,
-    MatInputModule,
     MatFormFieldModule,
-    MatCardModule,
-    MatMenuModule,
-    MatCardContent,
     MatButtonModule,
+    MatCardModule,
+    FormsModule,
+    MatInputModule,
     MatIconModule,
+    MatMenuModule,
     MatToolbarModule,
     MatSnackBarModule
-
   ],
   providers: [
     CookieService, AuthGuard

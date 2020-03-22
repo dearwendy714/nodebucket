@@ -58,8 +58,8 @@ mongoose
  */
 
 //find employee by id
-app.get("/api/employees/:id", function(req, res, next) {
-  Employee.findOne({ 'employeeId': req.params.id }, function(err, employee) {
+app.get("/api/employees/:empId", function(req, res, next) {
+  Employee.findOne({ 'employeeId': req.params.empId }, function(err, employee) {
     if (err) {
       console.log(err);
       return next(err);
@@ -74,13 +74,14 @@ app.get("/api/employees/:id", function(req, res, next) {
 // API used to retrieved all tasks from the database for a single employee
 app.get("/api/employees/:empId/tasks", function(req, res, next) {
   // Retrieve all of the documents from the mongoDB database
-  Employee.findOne({ 'employeeId': req.params.id }, 'empId todo done', function(err, employee) {
+  Employee.findOne({ 'employeeId': req.params.empId }, 'employeeId todo done', function(err, employee) {
     if (err) {
       console.log(err);
       return next(err);
     } else {
       console.log(employee);
       res.json(employee);
+      
     }
   });
 }); 
@@ -89,7 +90,7 @@ app.get("/api/employees/:empId/tasks", function(req, res, next) {
 // API used to create new task for single employee
 app.post("/api/employees/:empId/tasks", function(req, res, next) {
   // Retrieve all of the documents from the mongoDB database
-  Employee.findOne({ 'employeeId': req.params.id }, function(err, employee) {
+  Employee.findOne({ 'employeeId': req.params.empId }, function(err, employee) {
     if (err) {
       console.log(err);
       return next(err);
@@ -97,6 +98,7 @@ app.post("/api/employees/:empId/tasks", function(req, res, next) {
       console.log(employee);
 
       const item = {
+        taskId: req.body.taskId,
         text: req.body.text
       };
 
@@ -119,7 +121,7 @@ app.post("/api/employees/:empId/tasks", function(req, res, next) {
 // API used to create new task for single employee
 app.put("/api/employees/:empId/tasks", function(req, res, next) {
   // Retrieve all of the documents from the mongoDB database
-  Employee.findOne({ 'employeeId': req.params.id }, function(err, employee) {
+  Employee.findOne({ 'employeeId': req.params.empId }, function(err, employee) {
     if (err) {
       console.log(err);
       return next(err);
@@ -148,17 +150,19 @@ employee.set({
 //DeleteTask  API
 // API used to delete task for single employee
 app.delete("/api/employees/:empId/tasks/:taskId", function(req, res, next){
-  Employee.findOne({ 'empId': req.params,empId }, function(err,employee) {
+  Employee.findOne({ 'employeeId': req.params.empId }, function(err,employee) {
     if (err) {
       console.log(err);
       return next(err);
     } else {
       console.log(employee);
+      console.log(req.params.taskId)
 
-      const todoItem = employee.todo.find(item => item._id.toString() +++ req.params.taskId);
-      const doneItem = employee.done.find(item => item._id.toString() +++ req.params.taskId);
+      const todoItem = employee.todo.find(item => item._id === req.params.taskId);
+      const doneItem = employee.done.find(item => item._id === req.params.taskId);
 
       if(todoItem) {
+       
         employee.todo.id(todo.Item_id).remove();
         employee.save(function(err, emp1){
           if (err) {
@@ -183,10 +187,10 @@ app.delete("/api/employees/:empId/tasks/:taskId", function(req, res, next){
             }
             })
         } else {
-          console.log('unable to locate task: ${req.params.taskId}');
+          console.log(`unable to locate task: ${req.params.taskId}`);
           res.status(200).send({
             'type': 'warning', 
-            'text': 'unable to locate task: ${req.params.taskId}'
+            'text': `unable to locate task: ${req.params.taskId}`
           })
         }
  
