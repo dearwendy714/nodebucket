@@ -1,4 +1,11 @@
-.main-welcome {
+/**
+ * Title: home.component.css
+ * Author: Professor Krasso
+ * Date: 25 March 2020
+ * Modified by: Wendy Portillo
+ * Description: home.component.css
+ */
+ .main-welcome {
   margin-top: 30px;
 }
 
@@ -10,4 +17,46 @@
 .subtitle {
   text-align: center;
   font-size: 14px;
+}
+
+.task-title {
+  font-weight: lighter;
+}
+
+.tasks-container {
+  width: 35%;
+  margin: 0 auto;
+}
+
+.task-list {
+  border: solid 1px #ccc;
+  min-height: 60px;
+  background: white;
+  border-radius: 4 px;
+  overflow: hidden;
+  display: block;
+}
+
+.task-card {
+  cursor: move;
+  min-height: 60px;
+  height: 68px;
+  font-size: 14px;
+  border-bottom: solid 1px #ccc;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box last-child {
+  border: none;
+}
+
+.example-list.cdk-drop-list-dragging .task-card:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }

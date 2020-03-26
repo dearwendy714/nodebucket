@@ -18,7 +18,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
-import { HomeComponent } from './pages/home/home.component';
+import { HomeComponent } from "./pages/home/home.component";
 import { FlexLayoutModule } from '@angular/flex-layout';
 // tslint:disable-next-line: max-line-length
 import { SigninComponent } from './pages/signin/signin.component';
@@ -39,7 +39,17 @@ import { AboutComponent } from './pages/about/about.component';
 import { AddTaskComponent } from './pages/task/add-task/add-task.component';
 import { DeleteTaskComponent } from './pages/task/delete-task/delete-task.component';
 import { EditTaskComponent } from './pages/task/edit-task/edit-task.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatDialogModule } from '@angular/material/dialog';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { TaskCreateDialogComponent } from './shared/task-create-dialog/task-create-dialog.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
+
+
+
+
 
 
 @NgModule({
@@ -51,35 +61,43 @@ import { AuthGuard } from './shared/guards/auth.guard';
     SigninComponent,
     NavComponent,
     SignoutComponent,
+    NotFoundComponent,
     EmployeeComponent,
     TasksComponent,
     AboutComponent,
     AddTaskComponent,
     DeleteTaskComponent,
     EditTaskComponent,
-    TasksComponent
+    TasksComponent,
+    TaskCreateDialogComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    HttpClient,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(AppRoutes, { useHash: true, enableTracing: false, scrollPositionRestoration: 'enabled'}),
     FlexLayoutModule,
     MatFormFieldModule,
     MatButtonModule,
+    AuthLayoutComponent,
     MatCardModule,
     FormsModule,
     MatInputModule,
     MatIconModule,
     MatMenuModule,
     MatToolbarModule,
-    MatSnackBarModule
+    MatButtonModule,
+    MatDividerModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    DragDropModule
+
   ],
   providers: [
-    CookieService, AuthGuard
-  ],
+    CookieService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
