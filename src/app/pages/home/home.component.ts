@@ -7,6 +7,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from "@angular/router";
 import { CookieService } from 'ngx-cookie-service';
 import { MatDialog } from '@angular/material/dialog';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
@@ -25,7 +26,7 @@ export class HomeComponent implements OnInit {
   todo: any;
   done: any;
 
-  constructor(private http: HttpClient, private cookieService: CookieService, private dialog: MatDialog) {
+  constructor(private router: Router, private http: HttpClient, private cookieService: CookieService, private dialog: MatDialog) {
     this.sessionUser = this.cookieService.get('session_user'); // get the current session user
 
     // @Returns: An array of tasks by employeeId
@@ -129,5 +130,11 @@ export class HomeComponent implements OnInit {
       todo,
       done
     });
+  }
+
+  // Logout 
+  logout() {
+    this.cookieService.deleteAll();
+    this.router.navigate(["/signin"]);
   }
 }

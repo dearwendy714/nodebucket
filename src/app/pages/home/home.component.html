@@ -17,6 +17,9 @@
   <div fxLayout="row" fxLayoutGap="15px" class="tasks-container">
     <div fxFlex>
       <mat-card class="mat-elevation-z0">
+        <button mat-menu-item (click)="logout()">
+          logout
+        </button>
         <mat-card-title class="task-title">
           ToDo
           <div fxFlex></div>
@@ -46,7 +49,7 @@
                     <mat-icon style="color: #616771">more_horiz</mat-icon>
                   </button>
                   <mat-menu #todoOptionsMenu="matMenu" x-position="before">
-                    <button (click)="deleteTask(item._id)" mat-menu-item>
+                    <button (click)="deleteTask(item.taskId)" mat-menu-item>
                       Remove
                     </button>
                   </mat-menu>
@@ -76,7 +79,7 @@
                     <mat-icon>more_horiz</mat-icon>
                   </button>
                   <mat-menu #doneOptionsMenu="matMenu" x-position="before">
-                    <button (click)="deleteTask(item._id)" mat-menu-item>
+                    <button (click)="deleteTask(item.taskId)" mat-menu-item>
                       Remove
                     </button>
                   </mat-menu>
