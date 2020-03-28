@@ -16,6 +16,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const mongoose = require("mongoose");
 const Employee = require("./models/employee");
+const { v4: uuidv4 } = require("uuid");
 
 /**
  * App configurations
@@ -98,7 +99,7 @@ app.post("/api/employees/:empId/tasks", function(req, res, next) {
       console.log(employee);
 
       const item = {
-        taskId: req.body.taskId,
+        taskId: uuidv4(),
         text: req.body.text
       };
 
@@ -149,53 +150,58 @@ employee.set({
 
 //DeleteTask  API
 // API used to delete task for single employee
-app.delete("/api/employees/:empId/tasks/:taskId", function(req, res, next){
-  Employee.findOne({ 'employeeId': req.params.empId }, function(err,employee) {
+app.delete("/api/employees/:empId/tasks/:taskId", function(req, res, next) {
+  Employee.findOne({ employeeId: req.params.empId }, function(err, employee) {
     if (err) {
       console.log(err);
       return next(err);
     } else {
-      console.log(employee);
-      console.log(req.params.taskId)
+      const todoItem = employee.todo.find(
+        item => item.taskId === req.params.taskId
+      );
+      const doneItem = employee.done.find(
+        item => item.taskId === req.params.taskId
+      );
 
-      const todoItem = employee.todo.find(item => item._id === req.params.taskId);
-      const doneItem = employee.done.find(item => item._id === req.params.taskId);
-
-      if(todoItem) {
-       
-        employee.todo.id(todo.Item_id).remove();
-        employee.save(function(err, emp1){
-          if (err) {
-            console.log(err); 
-            return next(err); 
-          } else {
-            console.log(emp1);
-            res.json(emp1);
+      if (todoItem) {
+        employee.update(
+          { $pull: { todo: { taskId: todoItem.taskId } } },
+          { safe: true },
+          function removeConnectionsCB(err, obj) {
+            employee.save(function(err, emp1) {
+              if (err) {
+                console.log(err);
+                return next(err);
+              } else {
+                res.json(emp1);
+              }
+            });
           }
-          })
-
-        } else if (doneItem) {
-          employee.done.id(done.Item_id).remove();
-          employee.save(function(err, emp2){
-            
-            if (err) {
-              console.log(err); 
-              return next(err); 
-            } else {
-              console.log(emp2);
-              res.json(emp2);
-            }
-            })
-        } else {
-          console.log(`unable to locate task: ${req.params.taskId}`);
-          res.status(200).send({
-            'type': 'warning', 
-            'text': `unable to locate task: ${req.params.taskId}`
-          })
-        }
- 
+        );
+      } else if (doneItem) {
+        employee.update(
+          { $pull: { done: { taskId: doneItem.taskId } } },
+          { safe: true },
+          function removeConnectionsCB(err, obj) {
+            employee.save(function(err, emp1) {
+              if (err) {
+                console.log(err);
+                return next(err);
+              } else {
+                res.json(emp1);
+              }
+            });
+          }
+        );
+      } else {
+        console.log(`unable to locate task: ${req.params.taskId}`);
+        res.status(200).send({
+          type: "warning",
+          text: `unable to locate task: ${req.params.taskId}`
+        });
       }
-  })
+    }
+  });
 });
 
 

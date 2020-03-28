@@ -11,7 +11,7 @@ import { NgModule } from '@angular/core';
 
 import { RouterModule} from '@angular/router';
 import { AppRoutes } from './app.routing';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -69,20 +69,19 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     DeleteTaskComponent,
     EditTaskComponent,
     TasksComponent,
-    TaskCreateDialogComponent
+    TaskCreateDialogComponent,
+    AuthLayoutComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    HttpClient,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(AppRoutes, { useHash: true, enableTracing: false, scrollPositionRestoration: 'enabled'}),
     FlexLayoutModule,
     MatFormFieldModule,
     MatButtonModule,
-    AuthLayoutComponent,
     MatCardModule,
     FormsModule,
     MatInputModule,
