@@ -17,6 +17,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { TaskCreateDialogComponent } from './shared/task-create-dialog/task-create-dialog.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 
 
@@ -47,6 +48,10 @@ export const AppRoutes: Routes = [
       {
         path: 'task-create-dialog',
         component: TaskCreateDialogComponent
+      },
+      {
+        path: 'contact',
+        component: ContactComponent
       },
       {
         path: '**',
