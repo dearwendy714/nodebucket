@@ -36,7 +36,7 @@ export class SigninComponent implements OnInit {
       this.http.get('/api/employees/' + empId). subscribe(res => {
         if (res) {
           this.cookieService.set('session_user', empId);
-          this.router.navigate(['/']);
+          this.router.navigate(['/task']);
 
         } else {
           this.snackBar.open('The employee ID you entered is invalid, please try again.', 'ERROR', {

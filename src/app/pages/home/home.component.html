@@ -10,32 +10,10 @@
   <div class='homepage-card'>
       <h1>Nodebucket task management</h1>
 
-  <div id='main'>
-    <div class='homepage-card'>
-        <h2>We believe in making life easier. One task management software for all your need.</h2><br>
-      <p>nodebucket helps you manage your tasks in an easy visual way.</p>
-        </div>
-        <div class='parent' fxLayout='row'
-        fxLayout.xs="column"
-        fxLayoutAlign="center center">
-    <div>
-      <img class='-image' src="../../../assets/images/task.jpg" alt="task management-image" width="600" height="400">
-    
-    </div>
-    <mat-card class='right' fxFlex='90%'>
-
-      <h2>Nodebucket </h2>
-      <hr>
-      <p>nodebucket helps you manage your tasks in an easy visual way</p>
-      <button mat-raised-button color='accent' routerLink='./shared/task-create-dialog/task-create-dialog.component'>Task Management Service</button>
-  </mat-card>
-</div>
-</div>
-
-
   <div fxLayout="row" fxLayoutGap="15px" class="tasks-container">
     <div fxFlex>
       <mat-card class="mat-elevation-z0">
+        
         <button mat-menu-item (click)="logout()">
           logout
         </button>
@@ -62,7 +40,7 @@
 
             <div *ngFor="let item of todo" cdkDrag>
               <mat-card class="mat-elevation-z0 task-card" fxFlex>
-                <mat-card-subtitle style="height: 10% !important;" class="task-functions">
+                <mat-card-subtitle style="height: 40% !important;" class="task-functions">
                   <div fxFlex></div>
                   <button [matMenuTriggerFor]="todoOptionsMenu" mat-icon-button class="ml-xs">
                     <mat-icon style="color: #616771">more_horiz</mat-icon>

@@ -46,6 +46,7 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { TaskCreateDialogComponent } from './shared/task-create-dialog/task-create-dialog.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ContactComponent } from './pages/contact/contact.component';
+import { LandingComponent } from './pages/landing/landing.component';
 
 
 
@@ -72,7 +73,8 @@ import { ContactComponent } from './pages/contact/contact.component';
     TasksComponent,
     TaskCreateDialogComponent,
     AuthLayoutComponent,
-    ContactComponent
+    ContactComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,

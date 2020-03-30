@@ -18,6 +18,7 @@ import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component'
 import { SigninComponent } from './pages/signin/signin.component';
 import { TaskCreateDialogComponent } from './shared/task-create-dialog/task-create-dialog.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { LandingComponent } from './pages/landing/landing.component';
 
 
 
@@ -29,6 +30,12 @@ export const AppRoutes: Routes = [
     children: [
       {
         path: '',
+        component: LandingComponent,
+        // canActivate:[LandingComponent]
+
+      },
+      {
+        path: 'task',
         component: HomeComponent,
         // canActivate:[SigninComponent]
       },
