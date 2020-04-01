@@ -34,7 +34,7 @@ app.use(express.static(distDir));
 /**
  * Variables
  */
-const port = 3000; // server port
+const port = process.env.PORT || 3000 // server port
 
 /************************* Mongoose connection strings go below this line  ***************/
 // TODO: This line will need to be replaced with your actual database connection string
